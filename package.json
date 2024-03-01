@@ -1,0 +1,18 @@
+{
+  "name": "stockmetricsapi",
+  "version": "1.0.0",
+  "description": "The Stock Metrics API allows users to retrieve historical stock data and calculate metrics such as daily returns and alpha values. It leverages the IEX Cloud API for retrieving historical stock prices.",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Dagmawi Asres",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.18.2",
+    "nodemon": "^3.1.0"
+  }
+}
