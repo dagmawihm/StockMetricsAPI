@@ -5,6 +5,10 @@ module.exports.userInputValidator = (req, res, next) => {
     const { symbol, from, to } = req.query;
     let errorMsg = '';
 
+    function isValidDateFormat(dateString) {
+        return /^\d{4}-\d{2}-\d{2}$/.test(dateString);
+    }
+
     if (!symbol) {
         errorMsg += 'Stock symbol is required, ' // Ensure stock symbol is provided
     }
@@ -14,8 +18,9 @@ module.exports.userInputValidator = (req, res, next) => {
         const toDate = new Date(to);
 
         // Check if the date strings were valid (YYYY-MM-DD)
-        if (isNaN(fromDate.getTime()) || isNaN(toDate.getTime())) {
-            errorMsg += 'Invalid Date Use format (YYYY-MM-DD), ' // Handle invalid date format
+        if (!isValidDateFormat(from) || !isValidDateFormat(to) ||
+            isNaN(fromDate.getTime()) || isNaN(toDate.getTime())) {
+            errorMsg += 'Invalid date format! use (YYYY-MM-DD), '; // Handle invalid date format
         }
 
         if (fromDate > toDate) {
